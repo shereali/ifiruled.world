@@ -1,0 +1,88 @@
+/**
+ * "If I Ruled" Design System Tokens
+ * Brand Color Matrix: Presidential Navy (#0C1830), Sovereign Gold (#D4A02D), Royal Cream (#F5F1E8)
+ */
+
+:root {
+  /* Presidential Navy Tones */
+  --color-navy-950: #050B17;
+  --color-navy-900: #0C1830;
+  --color-navy-850: #0F2040;
+  --color-navy-800: #142850;
+  --color-navy-700: #1C3870;
+  --color-navy-600: #254B94;
+  --color-navy-500: #3366C2;
+
+  /* Sovereign Gold Accents */
+  --color-gold-600: #B5841D;
+  --color-gold-500: #D4A02D;
+  --color-gold-400: #E5B84B;
+  --color-gold-300: #F3D17C;
+  --color-gold-200: #F9E5AD;
+  --color-gold-100: #FDF7E7;
+
+  /* Royal Cream & Light Contrast */
+  --color-cream-50: #FDFAF5;
+  --color-cream-100: #F5F1E8;
+  --color-cream-200: #ECE4D3;
+  --color-cream-300: #DDD0B6;
+  --color-cream-400: #C7B593;
+
+  /* Monochromes & Translucents */
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+  --color-text-muted: #94A3B8;
+  --color-text-light: #F8FAFC;
+  --color-text-dark: #0F172A;
+  
+  /* Status Colors */
+  --color-live-red: #EF4444;
+  --color-live-glow: rgba(239, 68, 68, 0.4);
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
+  --color-info: #0EA5E9;
+
+  /* Glassmorphism & Surface */
+  --bg-primary: #070E1D;
+  --bg-secondary: #0C1830;
+  --bg-tertiary: #112244;
+  
+  --surface-glass: rgba(12, 24, 48, 0.65);
+  --surface-glass-heavy: rgba(7, 14, 29, 0.85);
+  --surface-card: rgba(15, 32, 64, 0.7);
+  --surface-card-hover: rgba(20, 40, 80, 0.85);
+  --surface-input: rgba(5, 11, 23, 0.6);
+
+  /* Borders & Dividers */
+  --border-gold-subtle: rgba(212, 160, 45, 0.22);
+  --border-gold-medium: rgba(212, 160, 45, 0.45);
+  --border-gold-glow: rgba(212, 160, 45, 0.75);
+  --border-navy-subtle: rgba(255, 255, 255, 0.08);
+
+  /* Glows & Drop Shadows */
+  --shadow-gold-sm: 0 4px 15px rgba(212, 160, 45, 0.15);
+  --shadow-gold-lg: 0 10px 30px rgba(212, 160, 45, 0.25);
+  --shadow-card: 0 10px 30px -5px rgba(0, 0, 0, 0.5), 0 0 0 1px var(--border-gold-subtle);
+  --shadow-card-hover: 0 20px 40px -10px rgba(0, 0, 0, 0.7), 0 0 20px var(--border-gold-medium);
+
+  /* Typography */
+  --font-display: 'Cinzel', 'Outfit', serif;
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Plus Jakarta Sans', 'Hind Siliguri', sans-serif;
+  --font-bengali: 'Hind Siliguri', sans-serif;
+
+  /* Transitions */
+  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: 150ms var(--ease-smooth);
+  --transition-base: 300ms var(--ease-spring);
+  --transition-slow: 500ms var(--ease-spring);
+
+  /* Spacings & Layout */
+  --max-width-container: 1280px;
+  --max-width-hero: 1100px;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-full: 9999px;
+}

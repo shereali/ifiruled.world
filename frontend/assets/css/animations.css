@@ -1,0 +1,115 @@
+/**
+ * Animations & Micro-interactions
+ */
+
+@keyframes pulseGold {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(212, 160, 45, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(212, 160, 45, 0.45), 0 0 10px rgba(212, 160, 45, 0.6);
+  }
+}
+
+@keyframes liveBlink {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(0.9);
+  }
+}
+
+@keyframes liveRipple {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(239, 68, 68, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+  }
+}
+
+@keyframes crownFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-6px) rotate(0.5deg);
+  }
+}
+
+@keyframes shimmerEffect {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ambientRotate {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.animate-pulse-gold {
+  animation: pulseGold 3s infinite ease-in-out;
+}
+
+.animate-live-dot {
+  animation: liveRipple 2s infinite ease-out;
+}
+
+.animate-crown {
+  animation: crownFloat 5s ease-in-out infinite;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s var(--ease-spring) forwards;
+}
+
+.shimmer-text {
+  background: linear-gradient(
+    90deg,
+    var(--color-cream-100) 0%,
+    var(--color-gold-300) 25%,
+    var(--color-cream-50) 50%,
+    var(--color-gold-400) 75%,
+    var(--color-cream-100) 100%
+  );
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shimmerEffect 6s linear infinite;
+}
+
+.gold-gradient-text {
+  background: linear-gradient(135deg, #FFF0C9 0%, #D4A02D 45%, #F4D381 75%, #B3821C 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}

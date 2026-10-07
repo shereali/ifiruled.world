@@ -1,0 +1,29 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Frontend — Nuxt 3 (Node SSR)
+# ─────────────────────────────────────────────────────────────────────────────
+FROM node:22-alpine AS build
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+RUN npm ci
+
+COPY . .
+
+ARG NUXT_PUBLIC_API_BASE=/api
+ENV NUXT_PUBLIC_API_BASE=$NUXT_PUBLIC_API_BASE
+RUN npm run build
+
+# ── Runtime stage ────────────────────────────────────────────────────────────
+FROM node:22-alpine AS runtime
+WORKDIR /app
+RUN apk add --no-cache dumb-init curl
+ENV NODE_ENV=production
+ENV PORT=3000
+ENV HOST=0.0.0.0
+
+COPY --from=build /app/.output ./.output
+COPY --from=build /app/package.json ./package.json
+
+EXPOSE 3000
+ENTRYPOINT ["dumb-init", "--"]
+CMD ["node", ".output/server/index.mjs"]

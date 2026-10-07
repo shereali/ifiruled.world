@@ -1,0 +1,21 @@
+{
+  "name": "ifiruled-frontend",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node --max-old-space-size=4096 node_modules/nuxt/bin/nuxt.mjs build",
+    "dev": "node --max-old-space-size=4096 node_modules/nuxt/bin/nuxt.mjs dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "lucide-vue-next": "^0.475.0",
+    "nuxt": "^3.15.4",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.4"
+  }
+}
