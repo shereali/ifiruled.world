@@ -8,10 +8,17 @@ SNAPSHOT_FILE="$BACKUP_DIR/pre_deploy_${TIMESTAMP}.sql.gz"
 
 git config --global --add safe.directory "$PWD" 2>/dev/null || true
 
+# Source production environment if present
+if [ -f .env ]; then
+    set -a
+    . ./.env
+    set +a
+fi
+
 echo "=== [1/6] Pulling latest git changes ==="
 if [ -d ".git" ]; then
-    git fetch origin main || true
-    git reset --hard origin/main || true
+    git fetch origin main 2>/dev/null || true
+    git reset --hard origin/main 2>/dev/null || true
 fi
 
 echo "=== [2/6] Creating Automated Pre-Deploy Database Snapshot ==="
@@ -33,7 +40,7 @@ docker compose up -d --build --remove-orphans
 echo "=== [4/6] Waiting for database service to be fully responsive ==="
 if docker compose ps db 2>/dev/null | grep -q "Up"; then
     for i in $(seq 1 30); do
-        if docker compose exec -T db mysqladmin ping -h 127.0.0.1 -u "${DB_USERNAME:-ifiruled_user}" -p"${DB_PASSWORD}" --silent 2>/dev/null; then
+        if docker compose exec -T db mysqladmin ping -h 127.0.0.1 -u root -p"${DB_ROOT_PASSWORD}" --silent 2>/dev/null; then
             echo ">>> Database is fully responsive!"
             break
         fi

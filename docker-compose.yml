@@ -8,7 +8,7 @@ services:
     restart: unless-stopped
     environment:
       NUXT_PUBLIC_API_BASE: /api
-      NUXT_API_BASE_SERVER: http://backend:8000/api
+      NUXT_API_BASE_SERVER: http://ifiruled-backend:8000/api
     depends_on:
       backend:
         condition: service_started
@@ -21,8 +21,10 @@ services:
     ports:
       - "127.0.0.1:3006:3000"
     networks:
-      - default
-      - caddy_net
+      default:
+        aliases:
+          - ifiruled-frontend
+      caddy_net:
 
   # ── Backend: Laravel API (Nginx + PHP-FPM) ─────────────────────────────────
   backend:
@@ -37,7 +39,7 @@ services:
       APP_KEY: ${APP_KEY}
       APP_URL: https://ifiruled.world
       DB_CONNECTION: mysql
-      DB_HOST: db
+      DB_HOST: ifiruled-db
       DB_PORT: 3306
       DB_DATABASE: ${DB_DATABASE:-if_i_ruled}
       DB_USERNAME: ${DB_USERNAME:-ifiruled_user}
@@ -56,8 +58,10 @@ services:
     ports:
       - "127.0.0.1:8006:8000"
     networks:
-      - default
-      - caddy_net
+      default:
+        aliases:
+          - ifiruled-backend
+      caddy_net:
     depends_on:
       db:
         condition: service_healthy
@@ -81,7 +85,9 @@ services:
       retries: 20
       start_period: 30s
     networks:
-      - default
+      default:
+        aliases:
+          - ifiruled-db
 
 volumes:
   backend-storage:
